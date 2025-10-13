@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-emerald: #059669;
+  --brand-sky: #0ea5e9;
+}
+
+* { box-sizing: border-box; }
