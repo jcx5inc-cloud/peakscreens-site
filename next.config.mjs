@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: { ignoreDuringBuilds: true },     // keeps lint from failing your build
-  typescript: { ignoreBuildErrors: false }, // set to true only if you need a quick pass
+  eslint: { ignoreDuringBuilds: true },     // keeps lint from failing the build
+  typescript: { ignoreBuildErrors: false }  // set to true temporarily if needed
 };
 export default nextConfig;
