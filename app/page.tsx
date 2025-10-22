@@ -1,3 +1,21 @@
+async function sendViaFormSubmit(payload: Record<string, any>) {
+  // Replace with your email (encoded is fine too)
+  const endpoint = "https://formsubmit.co/ajax/jcx5inc@gmail.com";
+
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      _subject: payload.subject ?? "New message from peakscreens.com",
+      _template: "table",
+      _captcha: "false",
+      ...payload,
+    }),
+  });
+
+  // FormSubmit returns 200 with JSON {success:"..." } when OK
+  return res.ok;
+}
 'use client';
 
 function scrollToId(id: string) {
