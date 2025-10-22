@@ -1,6 +1,0 @@
-{
-  "redirects": [
-    { "source": "/PeakScreens_Media_Kit.pdf", "destination": "/media-kit.html", "permanent": false },
-    { "source": "/PeakScreens_Rate_Card.pdf", "destination": "/rate-card.html", "permanent": false }
-  ]
-}
