@@ -130,8 +130,9 @@ export default function Page() {
         </div>
         {/* FIX: remove the PDF link and use the internal pages */}
         <div className="mt-4 flex flex-wrap gap-3">
-          <a href="/media-kit" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
-          <a href="/rate-card" className="px-4 py-2 rounded-xl bg-slate-900 text-white">View full rate card</a>
+<a href="/rate-card.html" className="px-4 py-2 rounded-xl bg-slate-900 text-white">Open rate card</a>
+<a href="/media-kit.html" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
+
         </div>
         <p className="text-xs text-slate-500 mt-3">*All packages subject to availability. Creative production available on request.</p>
       </section>
