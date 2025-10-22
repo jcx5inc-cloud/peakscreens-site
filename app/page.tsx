@@ -274,4 +274,116 @@ export default function Page() {
             </tbody>
           </table>
         </div>
-        <
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href="/rate-card" className="px-4 py-2 rounded-xl bg-slate-900 text-white">Open rate card</a>
+          <a href="/media-kit" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="max-w-6xl mx-auto px-4 py-14">
+        <h2 className="text-2xl md:text-3xl font-bold">Pricing</h2>
+        <p className="mt-3 text-slate-700">Packages for locals to national brands. Rates vary by seasonality, inventory, and share of voice.</p>
+        <div className="mt-6 grid md:grid-cols-3 gap-4">
+          <Package name="Starter (Local)" price="$500 / venue / mo" bullets={["One venue, :15s spot", "Business hours only", "Monthly performance recap"]} />
+          <Package name="County Booster" price="$1,500 / mo" bullets={["6+ venues across 2 resorts", "Dayparting included", "Brand-safe placement"]} highlight />
+          <Package name="Seasonal Takeover" price="Custom" bullets={["Category exclusivity", "Premium inventory & events", "Full-funnel reporting"]} />
+        </div>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <a href="/media-kit" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
+          <a href="/rate-card" className="px-4 py-2 rounded-xl bg-slate-900 text-white">View full rate card</a>
+        </div>
+        <p className="text-xs text-slate-500 mt-3">*All packages subject to availability. Creative production available on request.</p>
+      </section>
+
+      {/* BOOKING */}
+      <section id="book" className="max-w-6xl mx-auto px-4 py-14">
+        <h2 className="text-2xl md:text-3xl font-bold">Book a Call</h2>
+        <p className="mt-3 text-slate-700">Grab 15 minutes with our team to scope your campaign.</p>
+        <div className="mt-6 grid md:grid-cols-2 gap-6 items-start">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div className="aspect-video w-full rounded-xl border border-slate-200 overflow-hidden">
+              <iframe title="Booking" src="https://calendly.com/peakscreens/demo?hide_gdpr_banner=1" className="w-full h-full"/>
+            </div>
+            <p className="text-xs text-slate-500 mt-2">If the scheduler doesn&apos;t load, email <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a>.</p>
+          </div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 className="font-semibold">Why a quick call?</h3>
+            <ul className="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
+              <li>Match you with the right venues and dayparts</li>
+              <li>Confirm asset specs and creative needs</li>
+              <li>Give you a same-day flight plan & quote</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="max-w-6xl mx-auto px-4 py-14">
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">Let&apos;s talk</h2>
+            <p className="mt-3 text-slate-700">Tell us your goals and we&apos;ll propose a flight plan within 24 hours.</p>
+            <div className="mt-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+              <form onSubmit={(e) => { e.preventDefault(); const f=e.currentTarget as any; const name = f.name.value; const email = f.email.value; const msg = encodeURIComponent(f.message.value); const subject = encodeURIComponent(`PeakScreens inquiry from ${name}`); location.href = `mailto:jcx5inc@gmail.com?subject=${subject}&body=${msg}%0A%0AFrom:%20${encodeURIComponent(name)}%20(${encodeURIComponent(email)})`; }} className="space-y-3">
+                <input name="name" required placeholder="Your name" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <input name="email" required type="email" placeholder="Your email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <textarea name="message" required placeholder="What would you like to achieve?" rows={4} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <button type="submit" className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Send inquiry</button>
+              </form>
+              <p className="text-xs text-slate-500 mt-3">Prefer email? <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a></p>
+            </div>
+          </div>
+          <div className="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm h-full">
+            <h3 className="font-semibold text-lg">Tech & Operations</h3>
+            <ul className="mt-4 space-y-2 text-sm text-slate-700 list-disc pl-5">
+              <li>Remote content scheduling and instant updates</li>
+              <li>Proof-of-play logs and shareable analytics</li>
+              <li>Template library for promos, events, and safety alerts</li>
+              <li>Full-service install: screens, mounts, and media players</li>
+            </ul>
+            <div className="mt-6 text-sm text-slate-600">
+              Ready to deploy at <span className="font-medium">peakscreens.com</span>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LEGAL */}
+      <section id="legal" className="max-w-6xl mx-auto px-4 py-14">
+        <h2 className="text-2xl md:text-3xl font-bold">Legal</h2>
+        <div className="mt-6 grid md:grid-cols-2 gap-4">
+          <details id="legal-privacy" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
+            <summary className="font-semibold cursor-pointer select-none">Privacy Policy</summary>
+            <div className="text-sm text-slate-700 mt-3 space-y-3">
+              <p>We collect basic contact info you provide (name, email) and ad asset details for campaign setup. We don’t sell your data. Analytics are used to improve scheduling and reporting.</p>
+              <p>For removal or data access, email <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a>.</p>
+            </div>
+          </details>
+          <details id="legal-terms" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
+            <summary className="font-semibold cursor-pointer select-none">Terms of Service</summary>
+            <div className="text-sm text-slate-700 mt-3 space-y-3">
+              <p>Placements are subject to availability and brand-safety review. Proof-of-play is provided via logs; impression estimates are directional. Payment due prior to flight unless agreed otherwise.</p>
+              <p>Creative must meet specs and venue standards. Emergency messaging may pre-empt programming when required.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-slate-200 bg-white/70 backdrop-blur">
+        <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center gap-3 md:gap-6">
+          <div className="flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-emerald-600"><path d="M4 18l6-10 4 7 3-5 3 8H4z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            © {new Date().getFullYear()} PeakScreens. All rights reserved.
+          </div>
+          <div className="md:ml-auto flex items-center gap-4">
+            <a className="hover:underline" href="#legal-privacy">Privacy</a>
+            <a className="hover:underline" href="#legal-terms">Terms</a>
+            <a className="hover:underline" href="#contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
