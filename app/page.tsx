@@ -143,8 +143,7 @@ export default function Page() {
               <li>Spot length: 15s · Share of voice: 12%</li>
               <li>Estimated Impressions: 96,000/week</li>
             </ul>
-            <button onClick={() => (location.href='mailto:jimmy@peakscreens.com?subject=PeakScreens%20Creative%20Specs%20Request')} className="mt-6 px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Get creative specs</button>
-          </div>
+            </div>
         </div>
       </section>
 
