@@ -1,7 +1,8 @@
+'use client';
+
 async function sendViaFormSubmit(payload: Record<string, any>) {
   // Sends submissions to your Zoho email
   const endpoint = "https://formsubmit.co/ajax/jimmy@peakscreens.com";
-
 
   const res = await fetch(endpoint, {
     method: "POST",
@@ -17,7 +18,7 @@ async function sendViaFormSubmit(payload: Record<string, any>) {
   // FormSubmit returns 200 with JSON {success:"..." } when OK
   return res.ok;
 }
-'use client';
+
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
