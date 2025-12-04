@@ -241,7 +241,9 @@ export default function Page() {
               className="mt-4 space-y-3 text-sm"
             >
               <input name="brand" required placeholder="Brand / Advertiser" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
-              <input name="contact" required placeholder="Contact name & email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+              <input name="contact" required placeholder="Contact name" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+              <input name="email" required placeholder="Email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+              <input name="phone number" required placeholder="Phone number" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
               <div className="grid grid-cols-2 gap-3">
                 <select name="length" className="rounded-xl border border-slate-300 px-3 py-2"><option>15s</option><option>30s</option></select>
                 <input name="start" type="date" className="rounded-xl border border-slate-300 px-3 py-2"/>
@@ -256,13 +258,13 @@ export default function Page() {
               </div>
               <input name="budget" placeholder="Budget (e.g., $1,500/wk)" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
               <input name="asset" placeholder="Asset URL (Dropbox/Drive)" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
-              <textarea name="notes" placeholder="Notes or flight preferences" rows={4} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+              <textarea name="notes" placeholder="Notes or preferences" rows={4} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
               <button type="submit" className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Email submission</button>
             </form>
           </div>
           <div>
             <h2 className="text-2xl md:text-3xl font-bold">Ready to Launch</h2>
-            <p className="mt-3 text-slate-700">Use this quick form to kick off your campaign. We’ll respond with a flight plan and asset review.</p>
+            <p className="mt-3 text-slate-700">Use this quick form to kick off your campaign. We’ll respond with a plan and asset review.</p>
             <div className="mt-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
               <h4 className="font-semibold">Venue Application</h4>
               <form
@@ -290,7 +292,9 @@ export default function Page() {
                   <input name="screens" placeholder="# of screens" className="rounded-xl border border-slate-300 px-3 py-2"/>
                   <input name="traffic" placeholder="Daily foot traffic" className="rounded-xl border border-slate-300 px-3 py-2"/>
                 </div>
-                <input name="contact" placeholder="Owner/GM contact & email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <input name="contact" required placeholder="Contact name" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <input name="email" required placeholder="Email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
+                <input name="phone number" required placeholder="Phone number" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <textarea name="notes" placeholder="Anything else we should know" rows={3} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <button type="submit" className="px-4 py-2 rounded-xl bg-slate-900 text-white font-medium">Email application</button>
               </form>
@@ -334,10 +338,7 @@ export default function Page() {
             </tbody>
           </table>
         </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href="/rate-card" className="px-4 py-2 rounded-xl bg-slate-900 text-white">Open rate card</a>
-          <a href="/media-kit" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
-        </div>
+
       </section>
 
       {/* PRICING */}
@@ -349,10 +350,7 @@ export default function Page() {
           <Package name="County Booster" price="$1,500 / mo" bullets={["6+ venues across 2 resorts", "Dayparting included", "Brand-safe placement"]} highlight />
           <Package name="Seasonal Takeover" price="Custom" bullets={["Category exclusivity", "Premium inventory & events", "Full-funnel reporting"]} />
         </div>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <a href="/media-kit" className="px-4 py-2 rounded-xl bg-white border border-slate-200">Open media kit</a>
-          <a href="/rate-card" className="px-4 py-2 rounded-xl bg-slate-900 text-white">View full rate card</a>
-        </div>
+
         <p className="text-xs text-slate-500 mt-3">*All packages subject to availability. Creative production available on request.</p>
       </section>
 
