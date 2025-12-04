@@ -1,6 +1,7 @@
 async function sendViaFormSubmit(payload: Record<string, any>) {
-  // Replace with your email (encoded is fine too)
-  const endpoint = "https://formsubmit.co/ajax/jcx5inc@gmail.com";
+  // Sends submissions to your Zoho email
+  const endpoint = "https://formsubmit.co/ajax/jimmy@peakscreens.com";
+
 
   const res = await fetch(endpoint, {
     method: "POST",
@@ -77,7 +78,7 @@ export default function Page() {
             {['advertisers','venues','network','specs','submit','faq','ratecard','pricing','book','contact'].map(id => (
               <button key={id} onClick={() => scrollToId(id)} className="hover:text-emerald-700 capitalize">{id.replace('-',' ')}</button>
             ))}
-            <button onClick={() => (location.href='mailto:jcx5inc@gmail.com?subject=Book%20a%20PeakScreens%20Demo')} className="ml-2 px-3 py-1.5 rounded-xl bg-emerald-600 text-white">Book a demo</button>
+            <button onClick={() => (location.href='mailto:jimmy@peakscreens.com?subject=Book%20a%20PeakScreens%20Demo')} className="ml-2 px-3 py-1.5 rounded-xl bg-emerald-600 text-white">Book a demo</button>
           </nav>
         </div>
       </header>
@@ -97,7 +98,7 @@ export default function Page() {
               Get your brand in front of skiers, riders, and après crowds across Breckenridge, Keystone, Copper, A-Basin, and beyond—on bar TVs, gondolas, and hotel lobbies.
             </p>
             <div className="mt-6 flex gap-3">
-              <button onClick={() => (location.href='mailto:jcx5inc@gmail.com?subject=Book%20a%20PeakScreens%20Demo')} className="px-5 py-3 rounded-xl bg-slate-900 text-white font-medium">Book a demo</button>
+              <button onClick={() => (location.href='mailto:jimmy@peakscreens.com?subject=Book%20a%20PeakScreens%20Demo')} className="px-5 py-3 rounded-xl bg-slate-900 text-white font-medium">Book a demo</button>
               <button onClick={() => scrollToId('pricing')} className="px-5 py-3 rounded-xl bg-white border border-slate-200 font-medium">See pricing</button>
             </div>
             <div className="mt-6 grid grid-cols-3 gap-4">
@@ -140,7 +141,7 @@ export default function Page() {
               <li>Spot length: 15s · Share of voice: 12%</li>
               <li>Estimated Impressions: 96,000/week</li>
             </ul>
-            <button onClick={() => (location.href='mailto:jcx5inc@gmail.com?subject=PeakScreens%20Creative%20Specs%20Request')} className="mt-6 px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Get creative specs</button>
+            <button onClick={() => (location.href='mailto:jimmy@peakscreens.com?subject=PeakScreens%20Creative%20Specs%20Request')} className="mt-6 px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Get creative specs</button>
           </div>
         </div>
       </section>
@@ -156,7 +157,7 @@ export default function Page() {
               <li>Revenue share on paid ad slots</li>
               <li>Emergency & event messaging when you need it</li>
             </ul>
-            <button onClick={() => (location.href='mailto:jcx5inc@gmail.com?subject=Host%20PeakScreens%20at%20my%20venue')} className="mt-6 px-4 py-2 rounded-xl bg-slate-900 text-white font-medium">Host screens at my venue</button>
+            <button onClick={() => (location.href='mailto:jimmy@peakscreens.com?subject=Host%20PeakScreens%20at%20my%20venue')} className="mt-6 px-4 py-2 rounded-xl bg-slate-900 text-white font-medium">Host screens at my venue</button>
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-2xl md:text-3xl font-bold">For Venues</h2>
@@ -215,7 +216,38 @@ export default function Page() {
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div className="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
             <h3 className="font-semibold text-lg">Submit an Ad</h3>
-            <form onSubmit={(e) => { e.preventDefault(); const f=e.currentTarget as any; const params=new URLSearchParams({ subject: `Ad submission — ${f.brand.value}`, body: `Brand: ${f.brand.value}\nContact: ${f.contact.value}\nSpot length: ${f.length.value}\nTarget: ${Array.from(f.querySelectorAll('input[name=target]:checked')).map((x: any)=>x.value).join(', ')}\nStart date: ${f.start.value}\nBudget: ${f.budget.value}\nAsset URL: ${f.asset.value}\nNotes: ${f.notes.value}`}); location.href=`mailto:jcx5inc@gmail.com?${params.toString()}`; }} className="mt-4 space-y-3 text-sm">
+            <form
+  onSubmit={async (e) => {
+    e.preventDefault();
+    const f = e.currentTarget as any;
+
+    const targets = Array.from(
+      f.querySelectorAll('input[name=target]:checked')
+    ).map((x: any) => x.value);
+
+    const ok = await sendViaFormSubmit({
+      subject: `Ad submission — ${f.brand.value}`,
+      Brand: f.brand.value,
+      Contact: f.contact.value,
+      "Spot length": f.length.value,
+      Targets: targets.join(", "),
+      "Start date": f.start.value,
+      Budget: f.budget.value,
+      "Asset URL": f.asset.value,
+      Notes: f.notes.value,
+      _template: "table",
+    });
+
+    if (ok) {
+      alert("Thanks! Your ad submission was sent to PeakScreens.");
+      f.reset();
+    } else {
+      alert("Sorry, something went wrong sending your submission.");
+    }
+  }}
+  className="mt-4 space-y-3 text-sm"
+>
+
               <input name="brand" required placeholder="Brand / Advertiser" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
               <input name="contact" required placeholder="Contact name & email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
               <div className="grid grid-cols-2 gap-3">
@@ -241,7 +273,32 @@ export default function Page() {
             <p className="mt-3 text-slate-700">Use this quick form to kick off your campaign. We’ll respond with a flight plan and asset review.</p>
             <div className="mt-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
               <h4 className="font-semibold">Venue Application</h4>
-              <form onSubmit={(e)=>{ e.preventDefault(); const f=e.currentTarget as any; const params=new URLSearchParams({ subject: `Venue partner — ${f.venue.value}`, body: `Venue: ${f.venue.value}\nLocation: ${f.location.value}\nContact: ${f.contact.value}\nScreens on site: ${f.screens.value}\nDaily foot traffic: ${f.traffic.value}\nNotes: ${f.notes.value}`}); location.href=`mailto:jcx5inc@gmail.com?${params.toString()}`; }} className="mt-4 space-y-3 text-sm">
+              <form
+  onSubmit={async (e) => {
+    e.preventDefault();
+    const f = e.currentTarget as any;
+
+    const ok = await sendViaFormSubmit({
+      subject: `Venue partner — ${f.venue.value}`,
+      Venue: f.venue.value,
+      Location: f.location.value,
+      "Screens on site": f.screens.value,
+      "Daily foot traffic": f.traffic.value,
+      Contact: f.contact.value,
+      Notes: f.notes.value,
+      _template: "table",
+    });
+
+    if (ok) {
+      alert("Thanks! Your venue application was sent to PeakScreens.");
+      f.reset();
+    } else {
+      alert("Sorry, something went wrong sending your application.");
+    }
+  }}
+  className="mt-4 space-y-3 text-sm"
+>
+
                 <input name="venue" required placeholder="Venue name" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <input name="location" required placeholder="City / neighborhood" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <div className="grid grid-cols-2 gap-3">
@@ -323,7 +380,7 @@ export default function Page() {
             <div className="aspect-video w-full rounded-xl border border-slate-200 overflow-hidden">
               <iframe title="Booking" src="https://calendly.com/peakscreens/demo?hide_gdpr_banner=1" className="w-full h-full"/>
             </div>
-            <p className="text-xs text-slate-500 mt-2">If the scheduler doesn&apos;t load, email <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a>.</p>
+            <p className="text-xs text-slate-500 mt-2">If the scheduler doesn&apos;t load, email <a className="underline" href="mailto:jimmy@peakscreens.com">jimmy@peakscreens.com</a>.</p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <h3 className="font-semibold">Why a quick call?</h3>
@@ -343,13 +400,38 @@ export default function Page() {
             <h2 className="text-2xl md:text-3xl font-bold">Let&apos;s talk</h2>
             <p className="mt-3 text-slate-700">Tell us your goals and we&apos;ll propose a flight plan within 24 hours.</p>
             <div className="mt-6 rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
-              <form onSubmit={(e) => { e.preventDefault(); const f=e.currentTarget as any; const name = f.name.value; const email = f.email.value; const msg = encodeURIComponent(f.message.value); const subject = encodeURIComponent(`PeakScreens inquiry from ${name}`); location.href = `mailto:jcx5inc@gmail.com?subject=${subject}&body=${msg}%0A%0AFrom:%20${encodeURIComponent(name)}%20(${encodeURIComponent(email)})`; }} className="space-y-3">
+              <form
+  onSubmit={async (e) => {
+    e.preventDefault();
+    const f = e.currentTarget as any;
+
+    const ok = await sendViaFormSubmit({
+      subject: `PeakScreens inquiry from ${f.name.value}`,
+      Name: f.name.value,
+      Email: f.email.value,
+      Message: f.message.value,
+      _template: "table",
+    });
+
+    if (ok) {
+      alert("Thanks! Your message was sent to PeakScreens.");
+      f.reset();
+    } else {
+      alert("Sorry, something went wrong sending your message.");
+    }
+  }}
+  className="space-y-3"
+>
+
                 <input name="name" required placeholder="Your name" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <input name="email" required type="email" placeholder="Your email" className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <textarea name="message" required placeholder="What would you like to achieve?" rows={4} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <button type="submit" className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Send inquiry</button>
               </form>
-              <p className="text-xs text-slate-500 mt-3">Prefer email? <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a></p>
+              <p className="text-xs text-slate-500 mt-3">
+  Prefer email? <a className="underline" href="mailto:jimmy@peakscreens.com">jimmy@peakscreens.com</a>
+</p>
+
             </div>
           </div>
           <div className="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm h-full">
@@ -375,7 +457,7 @@ export default function Page() {
             <summary className="font-semibold cursor-pointer select-none">Privacy Policy</summary>
             <div className="text-sm text-slate-700 mt-3 space-y-3">
               <p>We collect basic contact info you provide (name, email) and ad asset details for campaign setup. We don’t sell your data. Analytics are used to improve scheduling and reporting.</p>
-              <p>For removal or data access, email <a className="underline" href="mailto:jcx5inc@gmail.com">jcx5inc@gmail.com</a>.</p>
+              <p>For removal or data access, email <a className="underline" href="mailto:jimmy@peakscreens.com">jimmy@peakscreens.com</a>.</p>
             </div>
           </details>
           <details id="legal-terms" className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6">
