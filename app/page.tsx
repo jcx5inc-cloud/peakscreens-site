@@ -114,7 +114,7 @@ export default function Page() {
               <img src="https://picsum.photos/seed/apres/540/360" alt="Après-ski bar with TV screens" className="rounded-xl shadow-2xl object-cover h-48 w-full md:h-64"/>
               <div className="grid gap-3">
                 <img src="https://picsum.photos/seed/gondola/540/360" alt="Gondola line signage screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
-                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.norki.com%2Fen%2Fblog%2Fcategory-link-rewrite%2Fhotel-lobby-design-where-high-end-decor-meets-timeless-functionality%3Fsrsltid%3DAfmBOoqayoTWM6ESkoGfwO3f8BdyvUKryfkwy74bELlkyQf9ZWsfEIL1&psig=AOvVaw0WoyN40uIvkSfbWO36WLyC&ust=1764911722499000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCMCw1NWWo5EDFQAAAAAdAAAAABAE" alt="Hotel lobby screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
+                <img src="https://www.norki.com/modules/hiblog/views/img/upload/original/fd0130733f0e62a0477886a799466062.jpg" alt="Hotel lobby screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
               </div>
             </div>
             <p className="text-xs text-slate-500 mt-3">Lifestyle imagery — representative of placements.</p>
