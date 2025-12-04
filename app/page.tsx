@@ -111,9 +111,9 @@ export default function Page() {
           </div>
           <div className="relative">
             <div className="grid grid-cols-2 gap-3">
-              <img src="https://picsum.photos/seed/apres/540/360" alt="Après-ski bar with TV screens" className="rounded-xl shadow-2xl object-cover h-48 w-full md:h-64"/>
+              <img src="https://www.grapevinebirmingham.com/wp-content/uploads/2022/12/apre-ski-bar-bullring-brum.jpg" alt="Après-ski bar with TV screens" className="rounded-xl shadow-2xl object-cover h-48 w-full md:h-64"/>
               <div className="grid gap-3">
-                <img src="https://picsum.photos/seed/gondola/540/360" alt="Gondola line signage screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
+                <img src="https://thegondolashop.com/cdn/shop/products/nockalmbahn44_4ddc7353-93d7-4945-a982-b37f9b847f29_1080x.jpg?v=1549048928" alt="Gondola line signage screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
                 <img src="https://www.norki.com/modules/hiblog/views/img/upload/original/fd0130733f0e62a0477886a799466062.jpg" alt="Hotel lobby screens" className="rounded-xl shadow-xl object-cover h-24 w-full md:h-32"/>
               </div>
             </div>
