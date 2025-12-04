@@ -382,9 +382,6 @@ export default function Page() {
                 <textarea name="message" required placeholder="What would you like to achieve?" rows={4} className="w-full rounded-xl border border-slate-300 px-3 py-2"/>
                 <button type="submit" className="px-4 py-2 rounded-xl bg-emerald-600 text-white font-medium">Send inquiry</button>
               </form>
-              <p className="text-xs text-slate-500 mt-3">
-                Prefer email? <a className="underline" href="mailto:jimmy@peakscreens.com">jimmy@peakscreens.com</a>
-              </p>
             </div>
           </div>
           <div className="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm h-full">
